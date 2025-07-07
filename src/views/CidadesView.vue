@@ -42,3 +42,8 @@ const cidadeStore = useCidade()
     </router-link>
   </div>
 </template>
+<style>
+h2 {
+  color: #000;
+}
+</style>
