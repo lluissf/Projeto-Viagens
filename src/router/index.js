@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/HomeView.vue' 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -9,7 +9,6 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
     },
-<<<<<<< HEAD
 
     {
       path: '/login',
@@ -23,7 +22,7 @@ const router = createRouter({
       path: '/cidade',
       name: 'cidade',
     
-      component: () => import('../views/CidadeView.vue'),
+      component: () => import('../views/CidadesView.vue'),
     },
      
     {
@@ -52,18 +51,15 @@ const router = createRouter({
       path: '/forma-pagamento',
       name: 'forma de pagamento',
  
-      component: () => import('../views/FormaPagamento.vue'),
+      component: () => import('../views/FormaPagamentoView.vue'),
     },
 
     {
       path: '/resumo',
       name: 'resumo',
  
-      component: () => import('../views/Resumo.vue'),
+      component: () => import('../views/ResumoView.vue'),
     },
-=======
-     
->>>>>>> 0c44edbc1b296e10ea0de4fba6f23d99d6466bc7
   ],
 })
 
