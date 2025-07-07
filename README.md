@@ -33,3 +33,12 @@ npm run build
 ```sh
 npm run lint
 ```
+#### HomePage
+
+#### Login                           (Nome do Usuário)
+#### Selecionar as Cidades           (Origem e Destino)
+#### Selecionar Meio de Locomoção    (Ônibus/Avião)
+#### Selecionar Viagem               (Hora/Data)
+#### Passageiros                     (Quantidade/Informações)
+#### Forma de Pagamento              (Debíto/Credito/Pix)
+#### Resumo (Compra)
