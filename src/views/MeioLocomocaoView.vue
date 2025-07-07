@@ -1,20 +1,26 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
 import { useCidade } from '@/stores/cidade'
 import { useMeioTransporte } from '@/stores/meio-transporte'
 
 const cidadeStore = useCidade() 
 const locomocaoStore = useMeioTransporte()
 const meioSelecionado = ref('')
+
+const router = useRouter()
+
+watch(meioSelecionado, (novo) => {
+  if (novo) {
+    router.push('/viagem')
+  }
+})
 </script>
 
 <template>
   <div>
-    <p>Selecione o meio de locomoção (Avião/Ônibus).</p>
-    
     <div v-if="cidadeStore.cidade_origem && cidadeStore.cidade_destino">
       <p>
-        Cidades Selecionadas:
         <strong>
           {{
             cidadeStore.cidades.find(c => c.id === cidadeStore.cidade_origem)?.nome
@@ -36,11 +42,5 @@ const meioSelecionado = ref('')
         {{ meio }}
       </option>
     </select>
-
-    <div v-if="meioSelecionado">
-      <router-link to="/viagem">
-        <button>Confirmar e ir para a Viagem</button>
-      </router-link>
-    </div>
   </div>
 </template>
