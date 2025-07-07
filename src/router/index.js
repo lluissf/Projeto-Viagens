@@ -9,6 +9,7 @@ const router = createRouter({
       name: 'home',
       component: HomeView,
     },
+<<<<<<< HEAD
 
     {
       path: '/login',
@@ -60,6 +61,9 @@ const router = createRouter({
  
       component: () => import('../views/Resumo.vue'),
     },
+=======
+     
+>>>>>>> 0c44edbc1b296e10ea0de4fba6f23d99d6466bc7
   ],
 })
 

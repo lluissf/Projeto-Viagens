@@ -1,9 +1,10 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+ 
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+    <div>
+        <h1>Travel Star</h1>
+        <p>Bem vindo ao nosso site.</p>
+    </div>
 </template>
