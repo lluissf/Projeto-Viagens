@@ -17,8 +17,14 @@
 header {
     display: flex;
     background: #2447b9;
+    justify-content: space-between;
+    align-items: center;
 }
-ul { 
+header h2 {
+    padding-left: 20px;
+    color: #323232
+}
+header ul { 
     justify-content: space-between;
 }
 ul li {
