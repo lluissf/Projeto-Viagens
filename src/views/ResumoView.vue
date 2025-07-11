@@ -46,6 +46,8 @@ const router = useRouter()
     <h2>Forma de Pagamento: {{ pagamentoStore.FormaSelecionada }}</h2>
 
     <h3>Obrigado por comprar conosco</h3>
+
+    <button>Gerar Passagem</button>
   </div>
 </template>
 
@@ -87,5 +89,37 @@ th, td {
 
 th {
   background-color: #f0f0f0;
+}
+
+button {
+  background-color: #f60;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 70%;
+  box-sizing: border-box;
+  margin: 0.75rem 2rem;
+ 
+}
+
+button:hover {
+  background-color: #d95300;
+}
+
+/*DESKTOP*/
+@media (min-width: 768px) {
+    button {
+    display: flex;
+    margin: 1rem auto 0;
+  }
+    button{
+      width: 30%;
+      margin: 5px 20px;
+    }
 }
 </style>

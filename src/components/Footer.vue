@@ -22,21 +22,10 @@ footer p {
 }
 
 footer {
-     position: fixed;
-     bottom: 0;
-     left: 0;
-     width: 100%;
-}
-
-
-/*DESKTOP*/
-@media (min-width: 768px) {
-
-    footer {
-     position: fixed;
+     position: bottom;
      bottom: 0;
      left: 0;
      width: 100%;
     }
-}
+
 </style>
