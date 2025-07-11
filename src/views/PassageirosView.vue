@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
 import { usePassageiros } from '@/stores/passageiros'
 import { useViagemSelecionada } from '@/stores/viagem'
-import dayjs from 'dayjs'
+//import dayjs from 'dayjs'
 
 const router = useRouter()
 const passageirosStore = usePassageiros()
@@ -18,7 +18,7 @@ function adicionarPassageiro() {
     passageirosStore.passageiros.push({
       nome: nome.value,
       documento: documento.value,
-      nascimento: nascimento.value
+      nascimento: nascimento.value,
     })
     nome.value = ''
     documento.value = ''
@@ -60,7 +60,7 @@ function irParaPagamento() {
       <input v-model="nome" placeholder="Nome do passageiro" />
       <input v-model="documento" placeholder="Documento (CPF/RG)" />
       <input v-model="nascimento" type="date" />
-      <button @click="adicionarPassageiro">Adicionar passageiro</button>
+      <button @click="adicionarPassageiro()">Adicionar passageiro</button>
     </div>
 
     <table v-if="passageirosStore.passageiros.length" class="tabela">
@@ -100,7 +100,7 @@ function irParaPagamento() {
   </div>
 </template>
 
- <style scoped>
+<style scoped>
 .container {
   max-width: 100%;
   padding: 1rem;
