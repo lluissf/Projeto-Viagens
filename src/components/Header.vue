@@ -2,9 +2,9 @@
   <header class="navbar">
     <router-link to="/"><h2 class="logo">Travel Star</h2></router-link>
     <nav>
-      <ul class="nav-list"> 
+      <!-- <ul class="nav-list">
         <li><router-link to="/cidade">Procurar Viagem</router-link></li>
-      </ul>
+      </ul> -->
     </nav>
   </header>
 </template>
