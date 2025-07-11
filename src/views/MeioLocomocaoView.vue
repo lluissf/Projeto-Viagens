@@ -19,7 +19,7 @@ watch(meioSelecionado, (novo) => {
 
 <template>
   <div>
-    <div v-if="cidadeStore.cidade_origem && cidadeStore.cidade_destino">
+    <div class="rota" v-if="cidadeStore.cidade_origem && cidadeStore.cidade_destino">
       <p>
         <strong>
           {{
@@ -32,7 +32,7 @@ watch(meioSelecionado, (novo) => {
       </p>
     </div>
 
-    <select v-model="meioSelecionado">
+    <select class="meio" v-model="meioSelecionado">
       <option disabled value="">Escolha o meio</option>
       <option
         v-for="meio in locomocaoStore.transporte"
@@ -44,3 +44,20 @@ watch(meioSelecionado, (novo) => {
     </select>
   </div>
 </template>
+
+<style scoped>
+
+  div.rota {
+    margin: 10px 0px 0px 0px;
+    font-size: 1.4rem;
+    padding: 20px;
+    color: #000;
+  }
+
+  div select.meio { 
+    padding: 8px;
+    margin: 5px;
+  }
+
+
+</style>

@@ -13,6 +13,12 @@ import Footer from './components/Footer.vue';
 </template>
 
 <style scoped>
+
+main {
+  min-height: 86.5vh;
+
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -48,7 +54,14 @@ nav a:first-of-type {
   border: 0;
 }
 
+
+
 @media (min-width: 1024px) {
+
+  main {
+  min-height: 80.5vh;
+
+}
   header {
     display: flex;
     place-items: center;
