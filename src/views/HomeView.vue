@@ -1,46 +1,54 @@
 <script setup>
- 
 </script>
 
 <template>
-    <div>
-        <h1>Travel Star</h1>
-        <p>Bem vindo ao nosso site.</p>
-    </div>
+  <div class="home-container">
+    <h1>🌟 Travel Star</h1>
+    <p>Bem-vindo ao nosso site de viagens! Explore destinos incríveis com conforto e segurança.</p>
+    <router-link to="/cidade">
+      <button>Procurar Viagens</button>
+    </router-link>
+  </div>
 </template>
 
-<style>
-
-h1 { 
-    margin: 10px 0px 0px 0px;
-    font-size: 1.4rem;
-    padding: 20px;
-    color: #000;
+<style scoped>
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1rem;
+  text-align: center;
+  min-height: 80vh;
+  background: linear-gradient(to bottom right, #f0f4ff, #d6e0ff);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h2 { 
-    font-size: 1.2rem;
-    padding: 10px;
-    color: #000;
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2447b9;
 }
 
 p {
-    padding: 10px 20px 20px 20px;
+  font-size: 1rem;
+  max-width: 500px;
+  color: #333;
+  margin-bottom: 2rem;
 }
 
 button {
-    margin: 15px;
-    padding: 12px;
-    border-radius: 10px;
-    background-color: rgb(2, 230, 192);
+  background-color: #2447b9;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-select {
-    padding: 8px;
-    margin: 5px;
-}
-
-option {
-    color: blue;
+button:hover {
+  background-color: #1a368c;
 }
 </style>
