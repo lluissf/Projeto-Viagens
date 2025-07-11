@@ -33,8 +33,38 @@ const router = useRouter()
 
          <h2>Forma de Pagamento: {{ pagamentoStore.FormaSelecionada }}</h2>
 
-        <p>Você chegou ao fim!</p>
+        <h3>Obrigado por comprar conosco</h3>
 
-        </div>
+    </div>
            
 </template>
+
+<style scoped>
+
+h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2447b9;
+    max-width: 100%;
+    padding: 1rem;
+    
+}
+
+h2 {
+    font-size: 1.0rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 100%;
+    padding: 0.3rem 1rem ;
+}
+
+h3 {
+    font-size: 1.0rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 100%;
+    padding: 3rem 1rem ;
+
+}
+
+
+</style>

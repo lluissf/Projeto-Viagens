@@ -10,14 +10,14 @@ const pagamentoStore = useFormaPagamento()
 <template>
   <div>
     <h1>Informe a forma que deseja realizar o pagamento.</h1>
-    <select v-model="pagamentoStore.meioSelecionado">
-      <option disabled value="">Escolha o meio de pagamento</option>
-      <option v-for="meio in pagamentoStore.pagamento" :key="meio" :value="meio">
-        {{ meio }}
+    <select v-model="pagamentoStore.FormaSelecionada">
+      <option disabled value="">Escolha o Forma de pagamento</option>
+      <option v-for="forma in pagamentoStore.pagamento" :key="forma" :value="forma">
+        {{ forma }}
       </option>
     </select>
 
-    <button @click="router.push('/resumo')" :disabled="!pagamentoStore.meioSelecionado">
+    <button @click="router.push('/resumo')" :disabled="!pagamentoStore.FormaSelecionada">
       Finalizar Compra
     </button>
   </div>
