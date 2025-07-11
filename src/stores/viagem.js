@@ -1,8 +1,7 @@
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import { defineStore } from 'pinia'
 
-export const useViagem = defineViagem('viagem', () => {
- const viagem = "Viagem"
-
+export const useViagemSelecionada = defineStore('viagemSelecionada', () => {
+  const viagem = ref(null)
   return { viagem }
 })

@@ -3,6 +3,8 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useCidade } from '@/stores/cidade'
 import { useMeioTransporte } from '@/stores/meio-transporte'
+import { useViagemSelecionada } from '@/stores/viagem'
+const viagemStore = useViagemSelecionada()
 
 const cidadeStore = useCidade()
 const transporteStore = useMeioTransporte()
@@ -39,6 +41,7 @@ const viagensDisponiveis = computed(() => {
 
 function prosseguir() {
     if (viagemSelecionada.value) {
+        viagemStore.viagem = viagemSelecionada.value
         router.push('/passageiros')
     }
 }
@@ -87,7 +90,7 @@ const tipoCores = {
                     <div class="preco">R$ {{ viagem.preco }}</div>
                 </div>
             </label>
-        </div> 
+        </div>
         <button v-if="viagemSelecionada" @click="prosseguir" class="botao">
             Prosseguir para os Passageiros
         </button>
