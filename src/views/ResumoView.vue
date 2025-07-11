@@ -72,18 +72,20 @@ h3 {
   font-size: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: 100%;
-  padding: 3rem 1rem;
+  padding: 3rem 1rem 1rem 1rem;
 }
 table {
-  width: 100%;
+  width: 80%;
   border-collapse: collapse;
   margin-bottom: 1rem;
+  margin: 0.75rem 1rem;
+  
 }
 
 th, td {
   padding: 0.3rem 1rem;
   border: 1px solid #ccc;
-  
+  width: 100%;
   text-align: left;
 }
 
@@ -115,11 +117,9 @@ button:hover {
 @media (min-width: 768px) {
     button {
     display: flex;
-    margin: 1rem auto 0;
-  }
-    button{
-      width: 30%;
-      margin: 5px 20px;
+    margin: 1rem;
+    width: 30%;
+    
     }
 }
 </style>
