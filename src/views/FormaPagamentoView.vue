@@ -4,7 +4,7 @@
 
 <template>
     <div> 
-        <p>Informe o Pagto.</p>
+        <h1>Informe o Pagto.</h1>
         <button><router-link to="/resumo">Finalizar Compra.</router-link></button>
     </div>
 </template>

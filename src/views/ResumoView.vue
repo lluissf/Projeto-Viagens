@@ -4,7 +4,7 @@
 
 <template>
     <div> 
-        <p>Resumo da compra.</p>
+        <h1>Resumo da compra.</h1>
         <p>Você chegou ao fim!</p>
     </div>
 </template>

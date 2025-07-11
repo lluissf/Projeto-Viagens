@@ -43,7 +43,7 @@ const cidadeStore = useCidade()
   </div>
 </template>
 <style>
-h2 {
-  color: #000;
-}
+
+
+
 </style>
