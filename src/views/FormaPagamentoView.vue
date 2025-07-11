@@ -16,16 +16,18 @@ const pagamentoStore = useFormaPagamento()
         {{ forma }}
       </option>
     </select>
+    <div>
+      <div v-if="pagamentoStore.FormaSelecionada === 'Pix'">
+       <img   src="../image/Pix.jpg" alt="Pix">
+     </div>
+      <div v-else-if="pagamentoStore.FormaSelecionada ==''"></div>
 
-    <div v-if="pagamentoStore.FormaSelecionada === 'Pix'">
-      <img   src="../image/Pix.jpg" alt="Pix">
-    </div>
-
-    <div v-else> 
+      <div v-else> 
         <input type="text" placeholder="Número do cartão" />
         <input type="text" placeholder="Nome impresso no cartão" />
         <input type="text" placeholder="Data de validade (MM/AA)" />
         <input type="text" placeholder="CVV" />
+     </div>
     </div>
 
     <button @click="router.push('/resumo')" :disabled="!pagamentoStore.FormaSelecionada">
