@@ -111,7 +111,7 @@ button:hover {
   background-color: #d95300;
 }
 
-/* DESKTOP: linha única */
+/* DESKTOP*/
 @media (min-width: 768px) {
   .form-container {
     flex-direction: row;
