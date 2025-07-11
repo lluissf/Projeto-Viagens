@@ -49,6 +49,7 @@ const total = computed(() => {
 
 function irParaPagamento() {
   if (passageirosStore.passageiros.length === 0) return
+  passageirosStore.totalCompra = total.value
   router.push('/forma-pagamento')
 }
 </script>

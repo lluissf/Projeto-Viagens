@@ -41,7 +41,7 @@ const router = useRouter()
       </tbody>
     </table>
 
-    <h2>Total: {{ passageirosStore.total }}</h2>
+    <h2>Total: {{ passageirosStore.totalCompra }}</h2>
 
     <h2>Forma de Pagamento: {{ pagamentoStore.FormaSelecionada }}</h2>
 
