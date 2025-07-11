@@ -5,6 +5,7 @@ import { useCidade } from '@/stores/cidade'
 const cidadeStore = useCidade()
 const dataIda = ref('')
 const dataVolta = ref('')
+
 </script>
 
 <template>
