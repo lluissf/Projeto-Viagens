@@ -1,20 +1,42 @@
 
-<script setup>
-</script>
-
 <template>
-    <div> <p>&copy;2025</p> </div>
+  <footer>
+    <p>&copy; 2025</p>
+  </footer>
 </template>
 
 <style scoped>
-
-div {
-    background-color:#2447b9;
+footer {
+  background-color: #2447b9;
+  color: #ffffff;
+  text-align: center;
+  padding: 1rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 
-p {
-    text-align: center;
-    color: #ffffff;
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
 }
 
+footer {
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+}
+
+
+/*DESKTOP*/
+@media (min-width: 768px) {
+
+    footer {
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+    }
+}
 </style>
