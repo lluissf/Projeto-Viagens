@@ -3,7 +3,8 @@ import { useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
 import { usePassageiros } from '@/stores/passageiros'
 import { useViagemSelecionada } from '@/stores/viagem'
-//import dayjs from 'dayjs'
+import dayjs from 'dayjs'
+
 
 const router = useRouter()
 const passageirosStore = usePassageiros()
