@@ -14,6 +14,9 @@ export const useCidade = defineStore('cidade', () => {
   const cidade_origem = ref(null) // guarda o id
   const cidade_destino = ref(null)
 
+  const dataIda = ref("")
+  const dataVolta = ref ("")
+
   const cidades_disponiveis_origem = computed(() =>
     cidades.value.filter(c => c.id !== cidade_destino.value)
   )
@@ -27,6 +30,8 @@ export const useCidade = defineStore('cidade', () => {
     cidade_origem,
     cidade_destino,
     cidades_disponiveis_origem,
-    cidades_disponiveis_destino
+    cidades_disponiveis_destino,
+    dataVolta,
+    dataIda,
   }
 })

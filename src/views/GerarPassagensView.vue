@@ -12,6 +12,16 @@ function gerarPDF() {
     console.error('Elemento #conteudo-pdf não encontrado!')
   }
 }
+
+function gerarCodigo() {
+  const random = Math.floor(Math.random() * 1000)
+  const timestamp = Date.now().toString(36)
+  return `CMP-${timestamp}-${random}`
+}
+
+const codigoCompra = gerarCodigo()
+
+
 </script>
 
 <template>
@@ -25,7 +35,10 @@ function gerarPDF() {
 
       <h2>Empresa: {{ resumoCompraStore.empresaViagem }}</h2>
 
-      <h2>Tipo: {{ resumoCompraStore.tipoViagem  }} ás {{resumoCompraStore.horarioEmbarque }} do Dia: {{ resumoCompraStore.dataViagem }}</h2>
+      <h2>Tipo: {{ resumoCompraStore.tipoViagem  }}</h2>
+      <h2>Com embarque no Dia {{ resumoCompraStore.dataIda }}  às {{resumoCompraStore.horarioEmbarque }} </h2>
+      <h2>Desembarque previsto para às {{ resumoCompraStore.horarioDesembarque }}</h2> 
+      
 
       <h2>Passageiros:</h2>
       <table>
@@ -47,6 +60,9 @@ function gerarPDF() {
           </tr>
         </tbody>
       </table>
+
+      <h2>As passagem apenas serão aceitais com a apresentação dos seus documentos</h2>
+      <h2>Codigo de confirmação: {{ gerarCodigo()}} </h2>
     </div>
 
     <button @click="gerarPDF">Gerar PDF</button>
@@ -64,7 +80,7 @@ h1 {
   padding: 1rem;
 }
 
-h2 {
+h2,p {
   font-size: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: 100%;

@@ -3,8 +3,7 @@ import { ref } from 'vue'
 import { useCidade } from '@/stores/cidade'
 
 const cidadeStore = useCidade()
-const dataIda = ref('')
-const dataVolta = ref('')
+
 
 </script>
 
@@ -38,22 +37,24 @@ const dataVolta = ref('')
       </select>
     </div>
 
-    <div class="form-group">
+        <div class="form-group">
       <label for="dataIda">Data de Ida</label>
-      <input id="dataIda" type="date" v-model="dataIda" />
+      <input id="dataIda" type="date" v-model="cidadeStore.dataIda" />
     </div>
 
+    
     <div class="form-group">
       <label for="dataVolta">Data de Volta</label>
-      <input id="dataVolta" type="date" v-model="dataVolta" />
+      <input id="dataVolta" type="date" v-model="cidadeStore.dataVolta" />
     </div>
 
-    <div v-if="dataIda && cidadeStore.cidade_origem && cidadeStore.cidade_destino" class="form-group">
+    
+    <div v-if="cidadeStore.dataIda && cidadeStore.cidade_origem && cidadeStore.cidade_destino "class="form-group" >
       <label class="invisivel">Buscar</label>
       <router-link to="/meiao-locomocao">
         <button type="button">Buscar</button>
       </router-link>
-    </div>
+  </div>
   </div>
 </template>
 
