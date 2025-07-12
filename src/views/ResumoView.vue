@@ -24,6 +24,11 @@ const router = useRouter()
 
     <h2>Meio de Transporte: {{ locomocaoStore.meioSelecionado }}</h2>
 
+    <h2>Data Ida: {{ cidadeStore.dataIda }}</h2>
+    <h2 v-if="cidadeStore.dataVolta !== ''">Data Volta: {{ cidadeStore.dataVolta }}</h2>
+    <h2 v-else>Sem data de volta</h2>
+    
+
     <h2>Passageiros:</h2>
     <table>
       <thead>
