@@ -10,10 +10,11 @@ const pagamentoStore = useFormaPagamento()
 const locomocaoStore = useMeioTransporte()
 const passageirosStore = usePassageiros()
 const router = useRouter()
+
 </script>
 
 <template>
-  <div>
+  <div >
     <h1>Resumo da compra</h1>
 
     <h2>
@@ -47,7 +48,7 @@ const router = useRouter()
 
     <h3>Obrigado por comprar conosco</h3>
 
-    <button>Gerar Passagem</button>
+    <button @click="router.push('/gerar-passagens')">Confirmar Compra</button>
   </div>
 </template>
 

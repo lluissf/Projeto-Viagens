@@ -16,6 +16,8 @@ See [Vite Configuration Reference](https://vite.dev/config/).
 npm install
 
 npm install dayjs
+
+npm install html2pdf.js
 ```
 
 ### Compile and Hot-Reload for Development
