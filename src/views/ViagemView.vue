@@ -35,7 +35,7 @@ const viagensDisponiveis = computed(() => {
     const destinoId = cidadeStore.cidade_destino
     const meio = transporteStore.meioSelecionado
 
-    if (!origemId || !destinoId || !meio) return []
+    if (!origemId || !destinoId || !meio ) return []
     return todasViagens[meio] ?? []
 })
 

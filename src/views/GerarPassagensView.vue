@@ -1,36 +1,100 @@
-<script >
-
-import html2pdf from 'html2pdf.js'
+<script setup lang="ts">
 import { useResumoCompra } from '@/stores/resumo'
+import html2pdf from 'html2pdf.js'
 
-const resumoStore = useResumoCompra()
+const resumoCompraStore = useResumoCompra()
 
-export default {
-  methods: {
-    gerarPDF() {
-      const elemento = document.getElementById('conteudo-pdf')
-      html2pdf().from(elemento).save('Passagens.pdf')
-    }
+function gerarPDF() {
+  const pdf = document.getElementById('conteudo-pdf')
+  if (pdf) {
+    html2pdf().from(pdf).save('Passagem.pdf')
+  } else {
+    console.error('Elemento #conteudo-pdf não encontrado!')
   }
 }
 </script>
+
 <template>
+  <div>
 
     <div id="conteudo-pdf">
-        <h1>Resumo da compra</h1>
+      <h1>Esse PDF serve como sua passagem</h1>
+      <h2>{{ resumoCompraStore.cidadeOrigem }} x  {{ resumoCompraStore.cidadeDestino }}</h2>
 
-    <h2>
-      Passagem: {{ resumoStore.cidades.find((c) => c.id === resumoStore.cidade_origem)?.nome }} ×
-      {{ resumoStore.cidades.find((c) => c.id === resumoStore.cidade_destino)?.nome }}
-    </h2>
+      <h2>Meio de Transporte: {{ resumoCompraStore.meioSelecionado }}</h2>
+
+      <h2>Empresa: {{ resumoCompraStore.Empresa }}</h2>
+
+      <h2>Tipo: {{ resumoCompraStore.Tipo }}</h2>
+
+      <h2>Passageiros:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Documento</th>
+            <th>Nascimento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(p, index) in resumoCompraStore.passageiros"
+            :key="index"
+          >
+            <td>{{ p.nome }}</td>
+            <td>{{ p.documento }}</td>
+            <td>{{ p.nascimento }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
- <button @click="gerarPDF">Gerar PDF com as passagen</button>
-
-
+    <button @click="gerarPDF">Gerar PDF</button>
+  </div>
 </template>
 
-<style scope>
+<style scoped>
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2447b9;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+h2 {
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 100%;
+  padding: 0.3rem 1rem;
+}
+
+h3 {
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 100%;
+  padding: 3rem 1rem 1rem 1rem;
+}
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  margin: 0.75rem 1rem;
+  
+}
+
+th, td {
+  padding: 0.3rem 1rem;
+  border: 1px solid #ccc;
+  width: 100%;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+}
 
 button {
   background-color: #f60;
@@ -60,7 +124,5 @@ button:hover {
     width: 30%;
     
     }
-
 }
-
 </style>
