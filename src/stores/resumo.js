@@ -26,21 +26,14 @@ export const useResumoCompra = defineStore('resumoCompra', () => {
     cidades.value.find(c => c.id === cidade_destino.value)?.nome || ''
   )
 
- const Empresa = computed(() => empresa_viagem.value || '')
-
- const Tipo = computed(() => tipo_viagem.value || '')
-
-
-return {
-  cidadeOrigem,
-  cidadeDestino,
-  meioSelecionado,
-  passageiros,
-  totalCompra,
-  FormaSelecionada,
-  cidades,
-  Empresa,
-  Tipo,
-}
+  return {
+   cidadeOrigem,
+   cidadeDestino,
+   meioSelecionado,
+   passageiros,
+   totalCompra,
+   FormaSelecionada,
+   cidades,
+ }
 
 })

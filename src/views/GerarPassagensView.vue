@@ -23,9 +23,9 @@ function gerarPDF() {
 
       <h2>Meio de Transporte: {{ resumoCompraStore.meioSelecionado }}</h2>
 
-      <h2>Empresa: {{ resumoCompraStore.Empresa }}</h2>
+      <h2>Empresa: {{  }}</h2>
 
-      <h2>Tipo: {{ resumoCompraStore.Tipo }}</h2>
+      <h2>Tipo: {{  }} ás {{ }} do Dia: {{  }}</h2>
 
       <h2>Passageiros:</h2>
       <table>

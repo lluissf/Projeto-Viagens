@@ -42,11 +42,9 @@ const router = useRouter()
       </tbody>
     </table>
 
-    <h2>Total: {{ passageirosStore.totalCompra }}</h2>
+    <h2>Total: R$ {{ passageirosStore.totalCompra }}</h2>
 
     <h2>Forma de Pagamento: {{ pagamentoStore.FormaSelecionada }}</h2>
-
-    <h3>Obrigado por comprar conosco</h3>
 
     <button @click="router.push('/gerar-passagens')">Confirmar Compra</button>
   </div>
