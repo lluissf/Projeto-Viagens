@@ -16,7 +16,7 @@ function gerarPDF() {
 function gerarCodigo() {
   const random = Math.floor(Math.random() * 1000)
   const timestamp = Date.now().toString(36)
-  return `CMP-${timestamp}-${random}`
+  return `STAR-${timestamp}-${random}`
 }
 
 const codigoCompra = gerarCodigo()
@@ -36,7 +36,13 @@ const codigoCompra = gerarCodigo()
       <h2>Empresa: {{ resumoCompraStore.empresaViagem }}</h2>
 
       <h2>Tipo: {{ resumoCompraStore.tipoViagem  }}</h2>
-      <h2>Com embarque no Dia {{ resumoCompraStore.dataIda }}  às {{resumoCompraStore.horarioEmbarque }} </h2>
+      
+
+      <h2>Data Ida: {{ resumoCompraStore.dataIda }}</h2>
+      <h2 v-if="resumoCompraStore.dataVolta !== ''">Data Volta: {{ resumoCompraStore.dataVolta }}</h2>
+      <h2 v-else>Sem data de volta</h2>
+
+      <h2>Com embarque previsto para às {{resumoCompraStore.horarioEmbarque }} </h2>
       <h2>Desembarque previsto para às {{ resumoCompraStore.horarioDesembarque }}</h2> 
       
 
