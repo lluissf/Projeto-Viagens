@@ -1,6 +1,7 @@
 // src/stores/resumoCompra.ts
 import { defineStore } from 'pinia'
 import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
 import { useCidade } from './cidade'
 import { useMeioTransporte } from './meio-transporte'
 import { useFormaPagamento } from './forma-pagamento'
