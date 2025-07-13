@@ -1,7 +1,15 @@
+<script setup>
+import { useNome } from '@/stores/login';
+
+const usuarioStore = useNome()
+
+</script>
+
 <template>
   <header class="navbar">
     <router-link to="/"><h2 class="logo">Travel Star</h2></router-link>
     <nav>
+      <p>{{ usuarioStore.Usuario }}</p>
       <!-- <ul class="nav-list">
         <li><router-link to="/cidade">Procurar Viagem</router-link></li>
       </ul> -->
@@ -9,8 +17,7 @@
   </header>
 </template>
 
-<script setup>
-</script>
+
 
 <style>
 /* MOBILE-FIRST */
@@ -54,6 +61,8 @@
 
 /* DESKTOP */
 @media (min-width: 768px) {
+
+  
   .navbar {
     flex-direction: row;
     justify-content: space-between;
@@ -62,6 +71,10 @@
   .nav-list {
     flex-direction: row;
     width: auto;
+  }
+
+  p{
+    padding: 0 2rem 0 0;
   }
 }
 </style>
