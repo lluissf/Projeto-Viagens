@@ -11,7 +11,7 @@ const pagamentoStore = useFormaPagamento()
   <div>
     <h1>Informe a forma que deseja realizar o pagamento.</h1>
     <select v-model="pagamentoStore.FormaSelecionada">
-      <option disabled value="">Escolha o Forma de pagamento</option>
+      <option disabled value="">Selecione</option>
       <option v-for="forma in pagamentoStore.pagamento" :key="forma" :value="forma">
         {{ forma }}
       </option>
@@ -22,7 +22,7 @@ const pagamentoStore = useFormaPagamento()
      </div>
       <div v-else-if="pagamentoStore.FormaSelecionada ==''"></div>
 
-      <div v-else> 
+      <div v-else>
         <input type="text" placeholder="Número do cartão" />
         <input type="text" placeholder="Nome impresso no cartão" />
         <input type="text" placeholder="Data de validade (MM/AA)" />
@@ -30,7 +30,7 @@ const pagamentoStore = useFormaPagamento()
      </div>
     </div>
 
-    <button @click="router.push('/resumo')" :disabled="!pagamentoStore.FormaSelecionada">
+    <button v-if="pagamentoStore.pagamento" @click="router.push('/resumo')" :disabled="!pagamentoStore.FormaSelecionada">
       Resumo da Compra
     </button>
   </div>
@@ -54,7 +54,7 @@ button, select {
   width: 80%;
   box-sizing: border-box;
   margin: 0.75rem 2rem;
-  
+
 }
 
 button {
@@ -63,7 +63,7 @@ button {
   border: none;
   cursor: pointer;
   transition: background 0.2s ease;
- 
+
 }
 
 button:hover {
@@ -72,7 +72,7 @@ button:hover {
 }
 
 img {
-  width: 80%; 
+  width: 80%;
   margin: 0.75rem 2.5rem;
 }
 
@@ -110,7 +110,7 @@ input {
     }
 
     img {
-      width: 20%; 
+      width: 20%;
     }
 
     input {

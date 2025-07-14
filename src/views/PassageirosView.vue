@@ -70,7 +70,7 @@ function irParaPagamento() {
         <tr>
           <th>Nome</th>
           <th>Documento</th>
-          <th>Nascimento</th>
+          <!--<th>Nascimento</th>-->
           <th>Idade</th>
           <th>Valor</th>
         </tr>
@@ -79,14 +79,14 @@ function irParaPagamento() {
         <tr v-for="(p, index) in passageirosStore.passageiros" :key="index">
           <td>{{ p.nome }}</td>
           <td>{{ p.documento }}</td>
-          <td>{{ p.nascimento }}</td>
+          <!-- <td>{{ p.nascimento }}</td> -->
           <td>{{ calcularIdade(p.nascimento) }} anos</td>
           <td>R$ {{ valorPassagem(p) }}</td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="4" class="total-label">Total:</td>
+          <td colspan="3" class="total-label">Total:</td>
           <td class="total">R$ {{ total }}</td>
         </tr>
       </tfoot>
@@ -97,7 +97,7 @@ function irParaPagamento() {
       :disabled="passageirosStore.passageiros.length === 0"
       class="botao"
     >
-      Ir para o Carrinho
+      Escolher Forma de Pagamento
     </button>
   </div>
 </template>
