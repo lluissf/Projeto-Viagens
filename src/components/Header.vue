@@ -70,6 +70,10 @@ watchEffect(() => {
   background-color: #1e3799;
 }
 
+p {
+  color: #13ecf0;
+}
+
 /* DESKTOP */
 @media (min-width: 768px) {
 
