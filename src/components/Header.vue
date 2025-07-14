@@ -1,9 +1,20 @@
 <script setup>
-import { useNome } from '@/stores/login';
+import { useNome } from '@/stores/login'
+import { useRouter } from 'vue-router'
+import { watchEffect } from 'vue'
 
 const usuarioStore = useNome()
+const router = useRouter()
 
+
+
+watchEffect(() => {
+  if (usuarioStore.Usuario === '') {
+    router.replace('/login')
+  }
+})
 </script>
+
 
 <template>
   <header class="navbar">
