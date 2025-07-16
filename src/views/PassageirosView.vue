@@ -5,7 +5,6 @@ import { usePassageiros } from '@/stores/passageiros'
 import { useViagemSelecionada } from '@/stores/viagem'
 import dayjs from 'dayjs'
 
-
 const router = useRouter()
 const passageirosStore = usePassageiros()
 const viagemStore = useViagemSelecionada()
@@ -13,36 +12,69 @@ const viagemStore = useViagemSelecionada()
 const nome = ref('')
 const documento = ref('')
 const nascimento = ref('')
-
-function adicionarPassageiro() {
-  if (nome.value && documento.value && nascimento.value) {
-    passageirosStore.passageiros.push({
-      nome: nome.value,
-      documento: documento.value,
-      nascimento: nascimento.value,
-    })
-    nome.value = ''
-    documento.value = ''
-    nascimento.value = ''
-  }
-}
+const erro = ref('')
 
 function calcularIdade(data) {
-  const hoje = dayjs()
+  if (!data || !dayjs(data).isValid()) {
+    erro.value = 'Data de nascimento inválida.'
+    return null
+  }
+
   const nasc = dayjs(data)
+  const hoje = dayjs()
+  console.log('Data de nascimento:', nasc.format('YYYY-MM-DD'), 'Hoje:', hoje.format('YYYY-MM-DD'))
+  if (nasc.year() < 1900  || nasc.isAfter(hoje)) {
+    erro.value = 'O ano informado deve ser entre 1900 e ' + nasc.isAfter(hoje);
+    return null
+  }
+
+  erro.value = ''
   return hoje.diff(nasc, 'year')
 }
+function adicionarPassageiro() {
+  if (!nome.value.trim()) {
+    erro.value = 'Informe o nome do passageiro.'
+    return
+  }
+
+  if (!documento.value || documento.value.toString().length < 6) {
+    erro.value = 'Documento inválido. Deve conter ao menos 6 dígitos.'
+    return
+  }
+
+  if (!nascimento.value) {
+    erro.value = 'Informe a data de nascimento.'
+    return
+  }
+
+  const idade = calcularIdade(nascimento.value)
+  if (idade === null) return
+
+  passageirosStore.passageiros.push({
+    nome: nome.value.trim(),
+    documento: documento.value,
+    nascimento: nascimento.value,
+  })
+
+  nome.value = ''
+  documento.value = ''
+  nascimento.value = ''
+  erro.value = ''
+}
+
 
 function valorPassagem(p) {
   const idade = calcularIdade(p.nascimento)
-  return idade <= 12 ? viagemStore.viagem?.preco / 2 : viagemStore.viagem?.preco
+  return idade !== null && idade <= 12
+    ? viagemStore.viagem?.preco / 2
+    : viagemStore.viagem?.preco
 }
 
 const total = computed(() => {
   const preco = viagemStore.viagem?.preco || 0
   return passageirosStore.passageiros.reduce((acc, p) => {
     const idade = calcularIdade(p.nascimento)
-    const valor = idade <= 12 ? preco / 2 : preco
+    const valor = idade !== null && idade <= 12 ? preco / 2 : preco
     return acc + valor
   }, 0)
 })
@@ -59,18 +91,25 @@ function irParaPagamento() {
     <h1>Informe os passageiros</h1>
 
     <div class="form">
-      <input v-model="nome" placeholder="Nome do passageiro" />
-      <input v-model="documento" placeholder="Documento (CPF/RG)" />
-      <input v-model="nascimento" type="date" />
-      <button @click="adicionarPassageiro()">Adicionar passageiro</button>
+      <input v-model="nome" type="text" placeholder="Nome do passageiro" />
+      <input v-model="documento" type="text" placeholder="Documento (CPF/RG)" /> 
+      <input
+        v-model="nascimento"
+        type="date"
+        :max="dayjs().format('YYYY-MM-DD')"
+        :min="'1900-01-01'"
+        placeholder="Informe a Data"
+      />
+      <button @click="adicionarPassageiro">Adicionar passageiro</button>
     </div>
+
+    <p v-if="erro" class="erro">{{ erro }}</p>
 
     <table v-if="passageirosStore.passageiros.length" class="tabela">
       <thead>
         <tr>
           <th>Nome</th>
           <th>Documento</th>
-          <!--<th>Nascimento</th>-->
           <th>Idade</th>
           <th>Valor</th>
         </tr>
@@ -79,15 +118,14 @@ function irParaPagamento() {
         <tr v-for="(p, index) in passageirosStore.passageiros" :key="index">
           <td>{{ p.nome }}</td>
           <td>{{ p.documento }}</td>
-          <!-- <td>{{ p.nascimento }}</td> -->
           <td>{{ calcularIdade(p.nascimento) }} anos</td>
-          <td>R$ {{ valorPassagem(p) }}</td>
+          <td>{{ valorPassagem(p).toFixed(2) }}</td>
         </tr>
       </tbody>
       <tfoot>
         <tr>
-          <td colspan="3" class="total-label">Total:</td>
-          <td class="total">R$ {{ total }}</td>
+          <td colspan="2" class="total-label">Total:</td>
+          <td colspan="2" class="total">R$ {{ total.toFixed(2) }}</td>
         </tr>
       </tfoot>
     </table>
@@ -119,7 +157,20 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.erro {
+  color: red;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.erro {
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-weight: bold;
 }
 
 input {
@@ -196,7 +247,6 @@ button:hover {
   background-color: #1a368c;
 }
 
-/* Telas maiores (tablet e desktop) */
 @media (min-width: 640px) {
   .form {
     flex-direction: row;

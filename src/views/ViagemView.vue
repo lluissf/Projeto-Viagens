@@ -61,18 +61,14 @@ const tipoCores = {
 </script>
 
 <template>
-    <div class="container">
-        <h1>Selecione a viagem</h1>
-
+    <div class="container"> 
         <p class="info">
             Rota:
             <strong>
                 {{cidadeStore.cidades.find(c => c.id === cidadeStore.cidade_origem)?.nome}}
                 ×
                 {{cidadeStore.cidades.find(c => c.id === cidadeStore.cidade_destino)?.nome}}
-            </strong>
-            —
-            <em>{{ transporteStore.meioSelecionado }}</em>
+            </strong> 
         </p>
 
         <div v-if="viagensDisponiveis.length" class="viagens">
@@ -100,8 +96,8 @@ const tipoCores = {
 <style scoped>
 .container {
     max-width: 700px;
-    margin: 2rem auto;
-    padding: 1rem 2rem;
+    margin: auto auto;
+    padding: 0 2rem;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #222;
 }
