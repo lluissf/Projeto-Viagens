@@ -12,52 +12,37 @@ const router = createRouter({
 
     {
       path: '/login',
-      name: 'login',
-  
+      name: 'login', 
       component: () => import('../views/LoginView.vue'),
-    },
-
-    
+    }, 
     {
       path: '/cidade',
-      name: 'cidade',
-    
+      name: 'cidade', 
       component: () => import('../views/CidadesView.vue'),
-    },
-     
+    }, 
     {
       path: '/meiao-locomocao',
-      name: 'meio locomocao',
-     
-      component: () => import('../views/MeioLocomocaoView.vue'),
-    },
-
+      name: 'meio locomocao', 
+      component: () => import('../views/TransporteView.vue'),
+    }, 
     {
       path: '/viagem',
-      name: 'viagem',
-      
+      name: 'viagem', 
       component: () => import('../views/ViagemView.vue'),
-    },
-
-
+    }, 
     {
       path: '/passageiros',
-      name: 'passageiros',
- 
+      name: 'passageiros', 
       component: () => import('../views/PassageirosView.vue'),
-    },
-
+    }, 
     {
       path: '/forma-pagamento',
-      name: 'forma de pagamento',
- 
-      component: () => import('../views/FormaPagamentoView.vue'),
-    },
-
+      name: 'forma-pagamento', 
+      component: () => import('../views/PagamentoView.vue'),
+    }, 
     {
       path: '/resumo',
-      name: 'resumo',
- 
+      name: 'resumo', 
       component: () => import('../views/ResumoView.vue'),
     }, 
   ],
