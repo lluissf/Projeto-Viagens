@@ -59,14 +59,7 @@ const router = createRouter({
       name: 'resumo',
  
       component: () => import('../views/ResumoView.vue'),
-    },
-
-    {
-       path: '/gerar-passagens',
-      name: 'gerar passagens',
- 
-      component: () => import('../views/GerarPassagensView.vue'),
-    },
+    }, 
   ],
 })
 

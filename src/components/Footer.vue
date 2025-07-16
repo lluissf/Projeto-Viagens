@@ -22,11 +22,10 @@ footer p {
 }
 
 footer {
-  position: fixed;
+  position: bottom;
   bottom: 0;
   left: 0;
   width: 100%;
-}
+} 
 
- 
 </style>
