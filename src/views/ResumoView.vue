@@ -1,61 +1,84 @@
-<script setup>
-import { useRouter } from 'vue-router'
-import { useCidade } from '@/stores/cidade'
-import { useMeioTransporte } from '@/stores/meio-transporte'
-import { useFormaPagamento } from '@/stores/forma-pagamento'
-import { usePassageiros } from '@/stores/passageiros'
+<script setup lang="ts">
+import { useResumoCompra } from '@/stores/resumo'
+import html2pdf from 'html2pdf.js'
 
-const cidadeStore = useCidade()
-const pagamentoStore = useFormaPagamento()
-const locomocaoStore = useMeioTransporte()
-const passageirosStore = usePassageiros()
-const router = useRouter()
+const resumoCompraStore = useResumoCompra()
+
+function gerarPDF() {
+  const pdf = document.getElementById('conteudo-pdf')
+  if (pdf) {
+    html2pdf().from(pdf).save('Passagem.pdf')
+  } else {
+    console.error('Elemento #conteudo-pdf não encontrado!')
+  }
+}
+
+function gerarCodigo() {
+  const random = Math.floor(Math.random() * 1000)
+  const timestamp = Date.now().toString(36)
+  return `STAR-${timestamp}-${random}`
+}
+
+const codigoCompra = gerarCodigo()
+
 
 </script>
 
 <template>
-  <div >
-    <h1>Resumo da compra</h1>
+  <div>
 
-    <h2>
-      Passagem: {{ cidadeStore.cidades.find((c) => c.id === cidadeStore.cidade_origem)?.nome }} ×
-      {{ cidadeStore.cidades.find((c) => c.id === cidadeStore.cidade_destino)?.nome }}
-    </h2>
+    <div id="conteudo-pdf">
+      <h1>Esse PDF serve como sua passagem</h1>
+      <h2>{{ resumoCompraStore.cidadeOrigem }} x  {{ resumoCompraStore.cidadeDestino }}</h2>
 
-    <h2>Meio de Transporte: {{ locomocaoStore.meioSelecionado }}</h2>
+      <h2>Meio de Transporte: {{ resumoCompraStore.meioSelecionado }}</h2>
 
-    <h2>Data Ida: {{ cidadeStore.dataIda }}</h2>
-    <h2 v-if="cidadeStore.dataVolta !== ''">Data Volta: {{ cidadeStore.dataVolta }}</h2>
-    <h2 v-else>Sem data de volta</h2>
-    
+      <h2>Empresa: {{ resumoCompraStore.empresaViagem }}</h2>
 
-    <h2>Passageiros:</h2>
-    <table>
-      <thead>
-        <tr>
-          <th> Nome </th>
-          <th> Documento </th>
-          <th> Nascimento </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(p, index) in passageirosStore.passageiros" :key="index">
-          <td>{{ p.nome }}</td>
-          <td>{{ p.documento }}</td>
-          <td>{{ p.nascimento }}</td>
-        </tr>
-      </tbody>
-    </table>
+      <h2>Tipo: {{ resumoCompraStore.tipoViagem  }}</h2>
+      
 
-    <h2>Total: R$ {{ passageirosStore.totalCompra }}</h2>
+      <h2>Data Ida: {{ resumoCompraStore.dataIda }}</h2>
+      <h2 v-if="resumoCompraStore.dataVolta !== ''">Data Volta: {{ resumoCompraStore.dataVolta }}</h2>
+      <h2 v-else>Sem data de volta</h2>
 
-    <h2>Forma de Pagamento: {{ pagamentoStore.FormaSelecionada }}</h2>
+      <h2>Com embarque previsto para às {{resumoCompraStore.horarioEmbarque }} </h2>
+      <h2>Desembarque previsto para às {{ resumoCompraStore.horarioDesembarque }}</h2> 
+      
+      <h2>Total: R$ {{ resumoCompraStore.totalCompra }}</h2>
+      <h2>Forma de Pagamento: {{ resumoCompraStore.FormaSelecionada }}</h2>
 
-    <button @click="router.push('/gerar-passagens')">Confirmar Compra</button>
+      <h2>Passageiros:</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Documento</th>
+            <th>Nascimento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(p, index) in resumoCompraStore.passageiros"
+            :key="index"
+          >
+            <td>{{ p.nome }}</td>
+            <td>{{ p.documento }}</td>
+            <td>{{ p.nascimento }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>As passagem apenas serão aceitais com a apresentação dos seus documentos</h2>
+      <h2>Codigo de confirmação: {{ gerarCodigo()}} </h2>
+    </div>
+
+    <button @click="gerarPDF">Gerar PDF</button>
   </div>
 </template>
 
 <style scoped>
+
 h1 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -65,7 +88,7 @@ h1 {
   padding: 1rem;
 }
 
-h2 {
+h2,p {
   font-size: 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   max-width: 100%;
