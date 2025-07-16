@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useResumoCompra } from '@/stores/resumo'
 import html2pdf from 'html2pdf.js'
 

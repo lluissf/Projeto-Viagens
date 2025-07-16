@@ -198,9 +198,11 @@ const tipoCores = {
     margin: 0 auto;
     width: fit-content;
     min-width: 180px;
+   
 }
 
 .botao:hover {
     background-color: #1a368c;
 }
+
 </style>
