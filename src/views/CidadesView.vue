@@ -49,7 +49,7 @@ const cidadeStore = useCidade()
     </div>
 
     
-    <div v-if="cidadeStore.dataIda && cidadeStore.cidade_origem && cidadeStore.cidade_destino "class="form-group" >
+    <div v-if="cidadeStore.dataIda && cidadeStore.cidade_origem && cidadeStore.cidade_destino" class="form-group" >
       <label class="invisivel">Buscar</label>
       <router-link to="/meiao-locomocao">
         <button type="button">Buscar</button>
