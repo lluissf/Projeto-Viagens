@@ -22,9 +22,8 @@ function calcularIdade(data) {
 
   const nasc = dayjs(data)
   const hoje = dayjs()
-  console.log('Data de nascimento:', nasc.format('YYYY-MM-DD'), 'Hoje:', hoje.format('YYYY-MM-DD'))
   if (nasc.year() < 1900  || nasc.isAfter(hoje)) {
-    erro.value = 'O ano informado deve ser entre 1900 e ' + nasc.isAfter(hoje);
+    erro.value = 'O ano informado deve ser entre 1900 e ' + hoje.year() + '.';
     return null
   }
 
