@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useCidade } from '@/stores/cidade'
+import dayjs from 'dayjs'
 
 const cidadeStore = useCidade()
 
@@ -39,13 +40,13 @@ const cidadeStore = useCidade()
 
         <div class="form-group">
       <label for="dataIda">Data de Ida</label>
-      <input id="dataIda" type="date" v-model="cidadeStore.dataIda" />
+      <input id="dataIda" type="date" :min="dayjs().format('YYYY-MM-DD')" v-model="cidadeStore.dataIda" />
     </div>
 
     
     <div class="form-group">
       <label for="dataVolta">Data de Volta</label>
-      <input id="dataVolta" type="date" v-model="cidadeStore.dataVolta" />
+      <input id="dataVolta" type="date" :min="dayjs().format('YYYY-MM-DD')" v-model="cidadeStore.dataVolta" />
     </div>
 
     
