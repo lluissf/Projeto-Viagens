@@ -31,6 +31,9 @@ function calcularIdade(data) {
   erro.value = ''
   return hoje.diff(nasc, 'year')
 }
+function removerPassageiro(index) {
+  passageirosStore.passageiros.splice(index, 1)
+}
 function adicionarPassageiro() {
   if (!nome.value.trim()) {
     erro.value = 'Informe o nome do passageiro.'
@@ -120,6 +123,9 @@ function irParaPagamento() {
           <td>{{ p.documento }}</td>
           <td>{{ calcularIdade(p.nascimento) }} anos</td>
           <td>{{ valorPassagem(p).toFixed(2) }}</td>
+          <td class="acao">
+            <button class="remover" @click="removerPassageiro(index)">🗑</button>
+          </td>
         </tr>
       </tbody>
       <tfoot>
@@ -216,7 +222,9 @@ button:hover {
   padding: 0.75rem;
   text-align: center;
 }
-
+.acao {
+  width: 25px;
+}
 .tabela th {
   background-color: #f0f0f0;
 }
