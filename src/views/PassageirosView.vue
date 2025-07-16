@@ -111,15 +111,16 @@ function irParaPagamento() {
       <thead>
         <tr>
           <th>Nome</th>
-          <th>Documento</th>
+          <!-- <th>Documento</th> -->
           <th>Idade</th>
           <th>Valor</th>
+          <th class="acao">Ação</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(p, index) in passageirosStore.passageiros" :key="index">
           <td>{{ p.nome }}</td>
-          <td>{{ p.documento }}</td>
+          <!-- <td>{{ p.documento }}</td> -->
           <td>{{ calcularIdade(p.nascimento) }} anos</td>
           <td>{{ valorPassagem(p).toFixed(2) }}</td>
           <td class="acao">
@@ -221,6 +222,7 @@ button:hover {
   padding: 0.75rem;
   text-align: center;
 }
+
 .acao {
   width: 25px;
 }
