@@ -114,7 +114,7 @@ function irParaPagamento() {
           <!-- <th>Documento</th> -->
           <th>Idade</th>
           <th>Valor</th>
-          <th class="acao">Ação</th>
+          <th class="acao"></th>
         </tr>
       </thead>
       <tbody>
